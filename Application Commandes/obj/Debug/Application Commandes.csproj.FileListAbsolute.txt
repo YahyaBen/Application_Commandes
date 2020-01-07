@@ -1,0 +1,16 @@
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\bin\Debug\Application Commandes.exe.config
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\bin\Debug\Application Commandes.exe
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\bin\Debug\Application Commandes.pdb
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\bin\Debug\EntityFramework.dll
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\bin\Debug\EntityFramework.xml
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application Commandes.csprojAssemblyReference.cache
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application_Commandes.Clients.resources
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application_Commandes.Categories.resources
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application_Commandes.Produits.resources
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application_Commandes.Properties.Resources.resources
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application Commandes.csproj.GenerateResource.cache
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application Commandes.csproj.CopyComplete
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application Commandes.exe
+C:\Users\Hyrku\OneDrive\Desktop\DS4\Application Commandes\obj\Debug\Application Commandes.pdb

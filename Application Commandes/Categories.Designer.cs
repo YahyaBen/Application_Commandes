@@ -36,11 +36,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Txt_CatID = new System.Windows.Forms.TextBox();
             this.Txt_CatLibelle = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGV_Cat = new System.Windows.Forms.DataGridView();
             this.Btn_CatFermer = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Txt_CatNbrProuit = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Cat)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_CatAjouter
@@ -51,6 +51,7 @@
             this.Btn_CatAjouter.TabIndex = 0;
             this.Btn_CatAjouter.Text = "Ajouter";
             this.Btn_CatAjouter.UseVisualStyleBackColor = true;
+            this.Btn_CatAjouter.Click += new System.EventHandler(this.Btn_CatAjouter_Click);
             // 
             // Btn_CatModifier
             // 
@@ -60,6 +61,7 @@
             this.Btn_CatModifier.TabIndex = 1;
             this.Btn_CatModifier.Text = "Modifier";
             this.Btn_CatModifier.UseVisualStyleBackColor = true;
+            this.Btn_CatModifier.Click += new System.EventHandler(this.Btn_CatModifier_Click);
             // 
             // Btn_CatSupprimer
             // 
@@ -69,6 +71,7 @@
             this.Btn_CatSupprimer.TabIndex = 2;
             this.Btn_CatSupprimer.Text = "Supprimer";
             this.Btn_CatSupprimer.UseVisualStyleBackColor = true;
+            this.Btn_CatSupprimer.Click += new System.EventHandler(this.Btn_CatSupprimer_Click);
             // 
             // Btn_CatRechercher
             // 
@@ -78,6 +81,7 @@
             this.Btn_CatRechercher.TabIndex = 3;
             this.Btn_CatRechercher.Text = "Rechercher";
             this.Btn_CatRechercher.UseVisualStyleBackColor = true;
+            this.Btn_CatRechercher.Click += new System.EventHandler(this.Btn_CatRechercher_Click);
             // 
             // label1
             // 
@@ -99,6 +103,7 @@
             // 
             // Txt_CatID
             // 
+            this.Txt_CatID.Enabled = false;
             this.Txt_CatID.Location = new System.Drawing.Point(105, 30);
             this.Txt_CatID.Name = "Txt_CatID";
             this.Txt_CatID.Size = new System.Drawing.Size(202, 20);
@@ -111,13 +116,15 @@
             this.Txt_CatLibelle.Size = new System.Drawing.Size(202, 20);
             this.Txt_CatLibelle.TabIndex = 9;
             // 
-            // dataGridView1
+            // DGV_Cat
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 114);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(313, 209);
-            this.dataGridView1.TabIndex = 12;
+            this.DGV_Cat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_Cat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Cat.Location = new System.Drawing.Point(40, 114);
+            this.DGV_Cat.Name = "DGV_Cat";
+            this.DGV_Cat.Size = new System.Drawing.Size(313, 209);
+            this.DGV_Cat.TabIndex = 12;
+            this.DGV_Cat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Cat_CellClick);
             // 
             // Btn_CatFermer
             // 
@@ -127,6 +134,7 @@
             this.Btn_CatFermer.TabIndex = 13;
             this.Btn_CatFermer.Text = "Fermer";
             this.Btn_CatFermer.UseVisualStyleBackColor = true;
+            this.Btn_CatFermer.Click += new System.EventHandler(this.Btn_CatFermer_Click);
             // 
             // label3
             // 
@@ -153,7 +161,7 @@
             this.Controls.Add(this.Txt_CatNbrProuit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Btn_CatFermer);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DGV_Cat);
             this.Controls.Add(this.Txt_CatLibelle);
             this.Controls.Add(this.Txt_CatID);
             this.Controls.Add(this.label2);
@@ -164,7 +172,8 @@
             this.Controls.Add(this.Btn_CatAjouter);
             this.Name = "Categories";
             this.Text = "Categories";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Categories_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Cat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +189,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Txt_CatID;
         private System.Windows.Forms.TextBox Txt_CatLibelle;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGV_Cat;
         private System.Windows.Forms.Button Btn_CatFermer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Txt_CatNbrProuit;

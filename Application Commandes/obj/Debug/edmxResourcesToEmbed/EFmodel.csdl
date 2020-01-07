@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ApplicationCommandesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Produits" Relationship="Self.FK_Produits_Categories" FromRole="Categories" ToRole="Produits" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Commandes" Relationship="Self.FK_Commandes_Clients" FromRole="Clients" ToRole="Commandes" />
+    <NavigationProperty Name="Commentaires" Relationship="Self.FK_Commentaire_Clients" FromRole="Clients" ToRole="Commentaire" />
+  </EntityType>
+  <EntityType Name="Commande">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date_Commande" Type="Int32" />
+    <Property Name="Objet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Client" Type="Int32" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Commandes_Clients" FromRole="Commandes" ToRole="Clients" />
+    <NavigationProperty Name="Factures" Relationship="Self.FK_Facture_Commandes" FromRole="Commandes" ToRole="Facture" />
+    <NavigationProperty Name="Ligne_Commande" Relationship="Self.FK_Ligne_Commande_Commandes" FromRole="Commandes" ToRole="Ligne_Commande" />
+    <NavigationProperty Name="Paiments" Relationship="Self.FK_Paiments_Commandes" FromRole="Commandes" ToRole="Paiments" />
+  </EntityType>
+  <EntityType Name="Commentaire">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Client" Type="Int32" />
+    <Property Name="Commentaire1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Commentaire_Clients" FromRole="Commentaire" ToRole="Clients" />
+  </EntityType>
+  <EntityType Name="Facture">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Commande" Type="Int32" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Commande" Relationship="Self.FK_Facture_Commandes" FromRole="Facture" ToRole="Commandes" />
+  </EntityType>
+  <EntityType Name="Ligne_Commande">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Commande" Type="Int32" />
+    <Property Name="ID__Produit" Type="Int32" />
+    <NavigationProperty Name="Commande" Relationship="Self.FK_Ligne_Commande_Commandes" FromRole="Ligne_Commande" ToRole="Commandes" />
+    <NavigationProperty Name="Produit" Relationship="Self.FK_Ligne_Commande_Produits" FromRole="Ligne_Commande" ToRole="Produits" />
+  </EntityType>
+  <EntityType Name="Paiment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DatePaiments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Montant" Type="Int32" />
+    <Property Name="ID_Command" Type="Int32" />
+    <NavigationProperty Name="Commande" Relationship="Self.FK_Paiments_Commandes" FromRole="Paiments" ToRole="Commandes" />
+  </EntityType>
+  <EntityType Name="Produit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Qte" Type="Int32" />
+    <Property Name="ID_Categories" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Produits_Categories" FromRole="Produits" ToRole="Categories" />
+    <NavigationProperty Name="Ligne_Commande" Relationship="Self.FK_Ligne_Commande_Produits" FromRole="Produits" ToRole="Ligne_Commande" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Produits_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Produits" Type="Self.Produit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Produits">
+        <PropertyRef Name="ID_Categories" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Commandes_Clients">
+    <End Role="Clients" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Commandes" Type="Self.Commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Commandes">
+        <PropertyRef Name="ID_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Commentaire_Clients">
+    <End Role="Clients" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Commentaire" Type="Self.Commentaire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Commentaire">
+        <PropertyRef Name="ID_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facture_Commandes">
+    <End Role="Commandes" Type="Self.Commande" Multiplicity="0..1" />
+    <End Role="Facture" Type="Self.Facture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commandes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Facture">
+        <PropertyRef Name="ID_Commande" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ligne_Commande_Commandes">
+    <End Role="Commandes" Type="Self.Commande" Multiplicity="0..1" />
+    <End Role="Ligne_Commande" Type="Self.Ligne_Commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commandes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ligne_Commande">
+        <PropertyRef Name="ID_Commande" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paiments_Commandes">
+    <End Role="Commandes" Type="Self.Commande" Multiplicity="0..1" />
+    <End Role="Paiments" Type="Self.Paiment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commandes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Paiments">
+        <PropertyRef Name="ID_Command" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ligne_Commande_Produits">
+    <End Role="Produits" Type="Self.Produit" Multiplicity="0..1" />
+    <End Role="Ligne_Commande" Type="Self.Ligne_Commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produits">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ligne_Commande">
+        <PropertyRef Name="ID__Produit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApplicationCommandesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Commandes" EntityType="Self.Commande" />
+    <EntitySet Name="Commentaires" EntityType="Self.Commentaire" />
+    <EntitySet Name="Factures" EntityType="Self.Facture" />
+    <EntitySet Name="Ligne_Commandes" EntityType="Self.Ligne_Commande" />
+    <EntitySet Name="Paiments" EntityType="Self.Paiment" />
+    <EntitySet Name="Produits" EntityType="Self.Produit" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Produits_Categories" Association="Self.FK_Produits_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Produits" EntitySet="Produits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Commandes_Clients" Association="Self.FK_Commandes_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Commandes" EntitySet="Commandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Commentaire_Clients" Association="Self.FK_Commentaire_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Commentaire" EntitySet="Commentaires" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facture_Commandes" Association="Self.FK_Facture_Commandes">
+      <End Role="Commandes" EntitySet="Commandes" />
+      <End Role="Facture" EntitySet="Factures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ligne_Commande_Commandes" Association="Self.FK_Ligne_Commande_Commandes">
+      <End Role="Commandes" EntitySet="Commandes" />
+      <End Role="Ligne_Commande" EntitySet="Ligne_Commandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paiments_Commandes" Association="Self.FK_Paiments_Commandes">
+      <End Role="Commandes" EntitySet="Commandes" />
+      <End Role="Paiments" EntitySet="Paiments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ligne_Commande_Produits" Association="Self.FK_Ligne_Commande_Produits">
+      <End Role="Produits" EntitySet="Produits" />
+      <End Role="Ligne_Commande" EntitySet="Ligne_Commandes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
