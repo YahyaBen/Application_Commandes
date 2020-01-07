@@ -16,7 +16,8 @@ namespace Application_Commandes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Categories());
+            //Application.Run(new Categories());
+            Application.Run(new Clients());
         }
     }
 }
